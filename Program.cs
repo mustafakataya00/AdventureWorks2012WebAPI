@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using AdventureWorkAPI.Data;
 using AdventureWorkAPI.Interfaces;
 using AdventureWorkAPI.Repository;
-
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,8 +25,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AdventureWorks2012Context>(o =>
 {
-o.UseSqlServer(builder.Configuration.GetConnectionString("myconnection"));
+    o.UseSqlServer(builder.Configuration.GetConnectionString("myconnection"));
 });
+
+
 
 var app = builder.Build();
 
